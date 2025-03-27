@@ -45,7 +45,7 @@ const AuthForm = () => {
           <h3>Pracrice Job Interviews with AI</h3>
       
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6 mt-4 form">
             <FormField
               control={form.control}
               name="username"
