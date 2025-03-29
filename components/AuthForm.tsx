@@ -4,23 +4,15 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+
+import { Form } from "@/components/ui/form";
 
 const formSchema = z.object({
   username: z.string().min(2).max(50),
 })
 
 
-const AuthForm = () => {
+const AuthForm = ({type}:{type: FormType}) => {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -32,7 +24,7 @@ const AuthForm = () => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values)
   }
-
+const isSignIn = type === "sign-in"
 
 
   return (
@@ -46,22 +38,8 @@ const AuthForm = () => {
       
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6 mt-4 form">
-            <FormField
-              control={form.control}
-              name="username"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Username</FormLabel>
-                  <FormControl>
-                    <Input placeholder="shadcn" {...field} />
-                  </FormControl>
-                < FormDescription>
-                    This is your public display name.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            {!isSignIn && <p>Name</p>}
+            
             <Button type="submit">Submit</Button>
           </form>
         </Form>
