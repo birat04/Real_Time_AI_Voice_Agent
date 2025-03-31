@@ -6,8 +6,8 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 
 import { Form } from "@/components/ui/form";
-import { signIn, signUp } from "@/lib/actions/auth.action";
-import FormField from "./FormField";
+// import { signIn, signUp } from "@/lib/actions/auth.action";
+// import FormField from "./FormField";
 import { toast } from "sonner"
 
 const authFormSchema = (type: FormType) => {
